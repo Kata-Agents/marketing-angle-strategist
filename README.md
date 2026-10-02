@@ -34,7 +34,7 @@ Two consequences worth being blunt about, because they decide whether this is us
 | `block_unsupported_angles` | Remove angles the brand cannot actually run — unsupported by the page, blocked by compliance, requiring a forbidden competitor or absent proof — and record each rejection with its reason. | `angles`, `frozen_brief` |
 | `score_angles` | Score each angle out of 100 with the arithmetic shown — proven signal from competitor longevity, evidence strength from quote volume and purchase proximity, and fit against the brief. | `angles` |
 | `pick_first_wave` | Choose which angles ship first and which wait, balancing score against how different the angles are from each other, so the first test can actually be read. | `scored_angles` |
-| `draft_angle_map` | Assemble the angle map for the hook stage — angles, hypotheses, evidence, rejections and the first wave — refusing to produce one when no evidence was supplied. | `campaign_context` |
+| `draft_angle_map` | Assemble the angle map for the hook stage — angles, hypotheses, evidence, rejections and the first wave — refusing to produce one when no evidence was supplied. | `campaign_context`, `scored_angles` |
 
 Optional inputs render as empty when omitted. Every template names that case and says
 what it could not determine, so an empty slot degrades into a stated gap rather than a
@@ -43,19 +43,20 @@ dangling clause.
 ## Part of a department
 
 This agent is one member of the **marketing video ad** department, a
-hub-orchestrator team of 7. The hub is `marketing-brief-scoper`, which locks the brief every later
+hub-orchestrator team of 8. The hub is `marketing-campaign-scoper`, which locks the brief every later
 stage reads; the other members are
 reached through it or called directly as `<alias>__<tool>`.
 
 | Agent | Stage in the pipeline |
 |---|---|
-| `marketing-brief-scoper` | 1 — interviews for the brief and freezes it (department hub) |
+| `marketing-campaign-scoper` | 1 — interviews for the brief and freezes it (department hub) |
 | `marketing-ad-researcher` | 2 — competitor harvest plan, longevity ranking, customer voice, coverage |
 | `marketing-angle-strategist` | 3 — scored angle map with auditable arithmetic |
 | `marketing-hook-writer` | 4 — the modular creative bank, built on verbatim customer language |
 | `marketing-ad-scripter` | 5 — modules, continuity kits, prompts, assembly map, QA protocol |
 | `marketing-production-planner` | 6 — blockers, tracks, cost estimate, shoot briefs, release gates |
-| `marketing-ad-tester` | 7 — clip QA, test design, readout, and the feedback loop back to 3, 4 and 5 |
+| `marketing-introgen-briefer` | 7 — hands approved creative to IntroGen as a brief, an avoid list and a briefing record (runs only when IntroGen renders; no repo of its own) |
+| `marketing-ad-tester` | 8 — clip QA, test design, readout, and the feedback loop back to 3, 4 and 5 |
 
 Each member is published independently and works on its own.
 
